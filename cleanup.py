@@ -182,8 +182,17 @@ if __name__ == "__main__":
     # Create a TimedRotatingFileHandler that rotates logs every week
     # 'when' can be 'W0' - roll over at midnight on Monday
     # 'backupCount' specifies how many backup files to keep
-    handler = TimedRotatingFileHandler(log_file, when='W0', interval=1, backupCount=4)
-    formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s')
+    handler = TimedRotatingFileHandler(
+        log_file,
+        when='W0',
+        interval=1,
+        backupCount=4
+    )
+    formatter = logging.Formatter(
+        '%(asctime)s '
+        '%(levelname)s: '
+        '%(message)s'
+    )
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
