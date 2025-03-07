@@ -188,6 +188,7 @@ if __name__ == "__main__":
         interval=1,          # Jede 1 Woche
         backupCount=7        # Es werden maximal 7 alte Log-Dateien aufbewahrt
     )
+
     formatter = logging.Formatter(
         '%(asctime)s '
         '%(levelname)s: '
