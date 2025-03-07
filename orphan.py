@@ -132,8 +132,18 @@ if __name__ == "__main__":
     logger.setLevel(logging.DEBUG)  # Set to DEBUG for detailed output during testing
 
     # Create a TimedRotatingFileHandler that rotates logs every week
-    handler = TimedRotatingFileHandler(log_file, when='W0', interval=1, backupCount=4)
-    formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s')
+    handler = TimedRotatingFileHandler(
+        log_file,
+        when='W0', interval=1,
+        backupCount=4
+    )
+
+    formatter = logging.Formatter(
+        '%(asctime)s '
+        '%(levelname)s: '
+        '%(message)s'
+    )
+
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
