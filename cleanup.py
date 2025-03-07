@@ -183,10 +183,10 @@ if __name__ == "__main__":
     # 'when' can be 'W0' - roll over at midnight on Monday
     # 'backupCount' specifies how many backup files to keep
     handler = TimedRotatingFileHandler(
-        log_file,
-        when='W0',
-        interval=1,
-        backupCount=4
+        log_file,            # Der Pfad zur Log-Datei
+        when='W0',           # Rotation erfolgt wöchentlich am Montag (W0 = Montag)
+        interval=1,          # Jede 1 Woche
+        backupCount=7        # Es werden maximal 7 alte Log-Dateien aufbewahrt
     )
     formatter = logging.Formatter(
         '%(asctime)s '
