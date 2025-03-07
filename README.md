@@ -23,6 +23,7 @@ This performs all actions (delete).
 ```bash
 python3 cleanup.py --test Y
 ```
+
 This logs all actions but doesn't do them.
 
 ## orphan.py
