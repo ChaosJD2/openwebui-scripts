@@ -7,10 +7,11 @@ from logging.handlers import TimedRotatingFileHandler
 import argparse
 
 # Configuration variables
-db_path = "/usr/openweb/venv/lib/python3.11/site-packages/open_webui/data/webui.db"
-uploads_dir = "/usr/openweb/venv/lib/python3.11/site-packages/open_webui/data/uploads/"
-cleanup_days = 7  # Number of days after which chats and files will be deleted
-log_file = '/usr/openweb/cleanlog/cleanup_openui.log'  # Update this path to the desired log file location
+db_path = "/app/backend/data/webui.db"
+uploads_dir = "/app/backend/data/uploads/"
+#cleanup_days = 7                                            # Number of days after which chats and files will be deleted
+cleanup_minutes = 5
+log_file = '/root/log/openui/cleanup/cleanup_openui.log'   # Update this path to the desired log file location
 
 def is_unix_timestamp(s):
     try:
@@ -61,7 +62,8 @@ def main():
             return
 
         # Get timestamp of cleanup_days ago
-        cleanup_threshold = int(time.time()) - cleanup_days * 24 * 60 * 60
+        #cleanup_threshold = int(time.time()) - cleanup_days * 24 * 60 * 60
+        cleanup_threshold = int(time.time()) - cleanup_minutes * 60
 
         # Select chat IDs and 'chat' JSON to delete
         try:
@@ -184,7 +186,7 @@ if __name__ == "__main__":
     # 'backupCount' specifies how many backup files to keep
     handler = TimedRotatingFileHandler(
         log_file,            # Der Pfad zur Log-Datei
-        when='W0',           # Rotation erfolgt wöchentlich am Montag (W0 = Montag)
+        when='midnight',     # Rotation erfolgt wöchentlich am Montag (W0 = Montag)
         interval=1,          # Jede 1 Woche
         backupCount=7        # Es werden maximal 7 alte Log-Dateien aufbewahrt
     )
