@@ -11,7 +11,7 @@ db_path = "/app/backend/data/webui.db"
 uploads_dir = "/app/backend/data/uploads/"
 #cleanup_days = 7                                            # Number of days after which chats and files will be deleted
 cleanup_minutes = 5
-log_file = '/root/log/openui/cleanup/cleanup_openui.log'   # Update this path to the desired log file location
+log_file = '/root/log/open_webui/cleanup/cleanup_openui.log'   # Update this path to the desired log file location
 
 def is_unix_timestamp(s):
     try:
