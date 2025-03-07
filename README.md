@@ -47,4 +47,17 @@ Script I use to launch open WebUI.
 
 ## upgrade_openweb.sh
 Script I use to upgrade to the latest version.
-```
+
+
+## Here are some commands for manual deleting in sqlite3
+
+What's happens here:
+
+```int(time.time())```
+Gives the system time back in seconds
+
+```cleanup_days```
+You set here the Days
+
+```24 * 60 * 60```
+here you calculate the days in seconds
