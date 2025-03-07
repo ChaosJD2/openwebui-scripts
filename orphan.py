@@ -134,7 +134,8 @@ if __name__ == "__main__":
     # Create a TimedRotatingFileHandler that rotates logs every week
     handler = TimedRotatingFileHandler(
         log_file,
-        when='W0', interval=1,
+        when='W0',
+        interval=1,
         backupCount=4
     )
 
