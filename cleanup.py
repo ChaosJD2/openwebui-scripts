@@ -9,9 +9,9 @@ import argparse
 # Configuration variables
 db_path = "/app/backend/data/webui.db"
 uploads_dir = "/app/backend/data/uploads/"
-#cleanup_days = 7                                            # Number of days after which chats and files will be deleted
-cleanup_minutes = 5
-log_file = '/root/log/open_webui/cleanup/cleanup_openui.log'   # Update this path to the desired log file location
+cleanup_days = 7                                                    # Number of days after which chats and files will be deleted, Prod
+#cleanup_minutes = 5                                                # Number of days after which chats and files will be deleted, Test
+log_file = '/root/log/open_webui/cleanup/cleanup_openui.log'        # Update this path to the desired log file location
 
 def is_unix_timestamp(s):
     try:
@@ -62,8 +62,12 @@ def main():
             return
 
         # Get timestamp of cleanup_days ago
-        #cleanup_threshold = int(time.time()) - cleanup_days * 24 * 60 * 60
-        cleanup_threshold = int(time.time()) - cleanup_minutes * 60
+
+        # Production environment
+        cleanup_threshold = int(time.time()) - cleanup_days * 24 * 60 * 60
+
+        # Test environment
+        #cleanup_threshold = int(time.time()) - cleanup_minutes * 60
 
         # Select chat IDs and 'chat' JSON to delete
         try:
